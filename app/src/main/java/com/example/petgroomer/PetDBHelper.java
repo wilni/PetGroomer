@@ -12,7 +12,7 @@ public class PetDBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
-
+    // SQL string for creating entry
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + PetHelper.PetEntry.TABLE_NAME + " (" +
             PetHelper.PetEntry._ID + " INTEGER PRIMARY KEY," +
             PetHelper.PetEntry.COLUMN_NAME_NAME + " TEXT," +
@@ -20,8 +20,14 @@ public class PetDBHelper extends SQLiteOpenHelper {
             PetHelper.PetEntry.COLUMN_NAME_WEIGHT + " INTEGER," +
             PetHelper.PetEntry.COLUMN_NAME_SPEC_INSTRUCTIONS + " TEXT)";
 
+    //SQL string for deleting all entries
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PetHelper.PetEntry.TABLE_NAME;
+
+    //SQL string for deleting single entry
+
+    //sql string for update
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
