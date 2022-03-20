@@ -62,11 +62,17 @@ public class MainActivity extends AppCompatActivity {
         Log.d("LOGTEST", "We made it through instructions ");
         long newRowID = db.insert(PetHelper.PetEntry.TABLE_NAME, null, values);
         Log.d("LOGTEST", "We inserted: " + newRowID);
+        String dogInfoTxt = "Name: " + dogName.getText().toString() +
+                "\nBreed: " +dogBreed.getText().toString() + "\nWeight: " +
+                dogWeight.getText().toString() + "\n instructions: \n" + special_instructions.getText().toString();
 
         dogName.setText("");
         dogBreed.setText("");
         dogWeight.setText("");
         special_instructions.setText("");
 
+
+
+        dogInfo.setText(dogInfoTxt);
     }
 }

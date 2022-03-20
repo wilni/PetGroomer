@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             TextView petBreed;
             TextView petWeight;
             TextView petInstruction;
+            ImageView petImage;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -31,6 +33,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 petBreed = itemView.findViewById(R.id.petBreedTV);
                 petWeight = itemView.findViewById(R.id.petWeightTV);
                 petInstruction = itemView.findViewById(R.id.petInstructionTV);
+                petImage = itemView.findViewById(R.id.imageView);
             }
         }
 
@@ -58,6 +61,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.petBreed.setText(petBreeds.get(position));
         holder.petWeight.setText(petWeights.get(position).toString());
         holder.petInstruction.setText(petInstructions.get(position));
+        holder.petImage.setImageResource(R.drawable.puppy);
     }
 
     @Override

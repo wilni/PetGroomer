@@ -17,14 +17,17 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_margin="10dp"
-            tools:srcCompat="@drawable/puppy"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            tools:srcCompat="@drawable/puppy" />
 
         <TextView
             android:id="@+id/petNameTV"
@@ -59,14 +62,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/petNameTV"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginTop="6dp"
             android:layout_marginBottom="8dp"
             android:layout_toRightOf="@id/imageView"
             android:fontFamily="sans-serif"
             android:text="Weight: "
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/petBreedTV"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/petWeightTV"
+            android:text="lbs"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/petInstructionTV"
