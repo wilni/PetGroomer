@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         long newRowID = db.insert(PetHelper.PetEntry.TABLE_NAME, null, values);
         Log.d("LOGTEST", "We inserted: " + newRowID);
         String dogInfoTxt = "Name: " + dogName.getText().toString() +
-                "\nBreed: " +dogBreed.getText().toString() + "\nWeight: " +
-                dogWeight.getText().toString() + "\n instructions: \n" + special_instructions.getText().toString();
+                "\nBreed: " +dogBreed.getText().toString() + " Weight: " +
+                dogWeight.getText().toString() + "\n instructions: " + special_instructions.getText().toString();
 
         dogName.setText("");
         dogBreed.setText("");

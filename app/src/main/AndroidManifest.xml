@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetGroomer">
         <activity
+            android:name=".PetPage"
+            android:exported="false"
+            android:parentActivityName=".ShowPage"/>
+        <activity
             android:name=".ShowPage"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

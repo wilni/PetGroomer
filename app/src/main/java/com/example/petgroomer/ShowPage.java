@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -14,7 +15,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowPage extends AppCompatActivity {
+public class ShowPage extends AppCompatActivity implements RecyclerAdapter.OnPetListener {
+    private static final String NAME_TAG = "name";
+    private static final String BREED_TAG = "breed";
+    private static final String WEIGHT_TAG = "weight";
+    private static final String INSTRUC_TAG = "instructions";
+
     //Recycler components for pet info
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
@@ -26,12 +32,20 @@ public class ShowPage extends AppCompatActivity {
     // declare created helper class for entity
     PetDBHelper petDBHelper;
 
+
+    // parallel List to hold each pet's info
+    List<String> petNames = new ArrayList<>();
+    List<String> petBreeds = new ArrayList<>();
+    List<Double> petWeights = new ArrayList<>();
+    List<String> petInstructions = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_page);
         //DB helper with app context
         petDBHelper = new PetDBHelper(getApplicationContext());
+
         // get db and set recycler;
         loadData();
         Log.v("READDATA", "we loaded the data");
@@ -62,12 +76,6 @@ public class ShowPage extends AppCompatActivity {
                 sortOrder                                 // The sort order
         );
 
-        // parallel List to hold each pet's info
-        List<String> petNames = new ArrayList<>();
-        List<String> petBreeds = new ArrayList<>();
-        List<Double> petWeights = new ArrayList<>();
-        List<String> petInstructions = new ArrayList<>();
-
 
 
         //navigate rows with cursor
@@ -90,8 +98,18 @@ public class ShowPage extends AppCompatActivity {
         recyclerManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerManager);
         //create and set adapter
-        adapter = new RecyclerAdapter(this, petNames, petBreeds, petWeights, petInstructions);
+        adapter = new RecyclerAdapter(this, petNames, petBreeds, petWeights, petInstructions, this);
         recyclerView.setAdapter(adapter);
 
+    }
+
+    @Override
+    public void onPetClick(int position) {
+        Intent intent = new Intent(this, PetPage.class);
+        intent.putExtra(NAME_TAG, petNames.get(position));
+        intent.putExtra(BREED_TAG, petBreeds.get(position));
+        intent.putExtra(WEIGHT_TAG, petWeights.get(position));
+        intent.putExtra(INSTRUC_TAG, petInstructions.get(position));
+        startActivity(intent);
     }
 }

@@ -25,6 +25,17 @@ public class PetDBHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + PetHelper.PetEntry.TABLE_NAME;
 
     //SQL string for deleting single entry
+    public void deletePet(String petName) {
+
+        // on below line we are creating
+        // a variable to write our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // on below line we are calling a method to delete our
+        // course and we are comparing it with our course name.
+        db.delete(PetHelper.PetEntry.TABLE_NAME, "name=?", new String[]{petName});
+        db.close();
+    }
 
     //sql string for update
 
